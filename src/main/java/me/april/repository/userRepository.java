@@ -1,6 +1,6 @@
 package me.april.repository;
 
-import me.april.entity.User;
+import me.april.domain.User;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -12,12 +12,12 @@ public class userRepository {
     @PersistenceContext
     private EntityManager em;
 
-    public int saveUser(User user) {
+    public long saveUser(User user) {
         em.persist(user);
-        return user.getUser_pk();
+        return user.getId();
     }
 
-    public User findUser(int user_pk) {
-        return em.find(User.class, user_pk);
+    public User findUser(long id) {
+        return em.find(User.class, id);
     }
 }
