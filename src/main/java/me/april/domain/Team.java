@@ -17,10 +17,12 @@ public class Team {
 
     private String team_name;
 
-    private int team_mem_count;
+    private int team_mem_cnt;
+
+    private String team_pw;
 
     @ManyToOne
-    @JoinColumn(name = "user_id") // id로 join
+    @JoinColumn(name = "team_manager") // id로 join
     private User team_manager; // join 하는 것은 user
 
     @OneToMany(mappedBy = "team")
