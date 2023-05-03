@@ -1,7 +1,6 @@
 package me.april.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -10,6 +9,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,4 +30,12 @@ public class Team {
 
     @OneToMany(mappedBy = "team")
     private List<Post_Problem> problems = new ArrayList<>();
+
+    @Builder
+    public Team(String team_name, User team_manager, int team_mem_cnt, String team_pw) {
+        this.team_name=team_name;
+        this.team_manager=team_manager;
+        this.team_mem_cnt=team_mem_cnt;
+        this.team_pw=team_pw;
+    }
 }

@@ -1,5 +1,6 @@
 package me.april.service;
 
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import me.april.domain.Team;
 import me.april.domain.User;
@@ -30,6 +31,7 @@ public class TeamService {
 
     public Long joinTeam(User user, String pw, String teamName) { // 유저, 유저가 입력한 비밀번호, 유저가 선택한 팀
         Team team= teamRepository.findTeamByName(teamName).get(0);
+        System.out.println(team.getTeam_name());
         validateTeamPw(team, pw);//비밀번호 검증
         team.setTeam_mem_cnt(team.getTeam_mem_cnt()+1); // 팀 멤버 한명 늘리기
         User_Team user_team = new User_Team();
