@@ -21,7 +21,7 @@ public class UserService {
     public Long join(User user) {
         validateDuplicateUserId(user);
         validateDuplicateUsername(user);
-        userRepository.saveUser(user);
+        userRepository.save(user);
         return user.getId();
     }
     //예외 처리

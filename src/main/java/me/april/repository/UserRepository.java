@@ -14,7 +14,7 @@ public class UserRepository {
 
     private final EntityManager em;
 
-    public long saveUser(User user) {
+    public long save(User user) {
         em.persist(user); // jpa가 저장하는 로직
         return user.getId();
     }
