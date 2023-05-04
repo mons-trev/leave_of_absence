@@ -13,11 +13,15 @@ public class TeamRepository {
 
     private final EntityManager em;
 
-    public long saveTeam(Team team) {
+    public long save(Team team) {
         em.persist(team);
         return team.getId();
     }
 
+    public List<Team> findAll() {
+        return em.createQuery("select t from Team t")
+                .getResultList();
+    }
     public List<Team> findTeamByName(String name) {
         return  em.createQuery("select t from Team t where t.team_name =: name")
                 .setParameter("name", name)

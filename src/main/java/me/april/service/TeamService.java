@@ -21,7 +21,7 @@ public class TeamService {
     public Long makeTeam(User user, Team team) {
         validateDuplicateName(team.getTeam_name());
         team.setTeam_mem_cnt(team.getTeam_mem_cnt()+1);
-        teamRepository.saveTeam(team);
+        teamRepository.save(team);
         User_Team user_team= new User_Team();
         user_team.setTeam(team);
         user_team.setUser(team.getTeam_manager());
@@ -39,6 +39,15 @@ public class TeamService {
         user_team.setUser(user);
         user_teamRepository.save(user_team);
         return user_team.getId();
+    }
+    @Transactional(readOnly = true)
+    public List<Team> findTeams() {
+        return teamRepository.findAll();
+    }
+
+    @Transactional(readOnly = true)
+    public List<Team> findTeamsByName(String name) {
+        return teamRepository.findTeamByName(name);
     }
     public void validateDuplicateName(String name) {
         List<Team> team= teamRepository.findTeamByName(name);
