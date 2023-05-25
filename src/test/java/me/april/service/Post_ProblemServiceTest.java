@@ -33,13 +33,13 @@ class Post_ProblemServiceTest {
         user.setUser_pw("0");
         user.setUser_name("1");
 
-        userService.join(user);
+        //userService.join(user);
         Team team= Team.builder()
                 .team_name("teamtest")
                 .team_mem_cnt(0)
                 .team_manager(user)
                 .team_pw("0000").build();
-        teamService.makeTeam(user, team);
+        //teamService.makeTeam(user, team);
 
         Post_Problem post_problem=new Post_Problem();
 
